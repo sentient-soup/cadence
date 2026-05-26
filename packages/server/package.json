@@ -1,14 +1,14 @@
 {
-  "name": "@fitness/server",
+  "name": "@cadence/server",
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "pnpm --filter @fitness/shared build && tsx watch src/index.ts",
+    "dev": "pnpm --filter @cadence/shared build && tsx watch src/index.ts",
     "build": "tsc -p tsconfig.json",
     "start": "node dist/index.js"
   },
   "dependencies": {
-    "@fitness/shared": "workspace:*",
+    "@cadence/shared": "workspace:*",
     "bcrypt": "^6.0.0",
     "better-sqlite3": "^12.10.0",
     "cors": "^2.8.6",

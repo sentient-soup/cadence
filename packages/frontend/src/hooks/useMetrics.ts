@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import type { DailyMetrics } from '@fitness/shared';
+import type { DailyMetrics } from '@cadence/shared';
 import { STORAGE_KEYS } from '../storage/keys';
 import { getAll, upsertByDate } from '../storage/storage';
 import { getISODate, getLastNDays } from '../utils/dateUtils';

@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import type { AuthState } from '@fitness/shared';
+import type { AuthState } from '@cadence/shared';
 
 const AUTH_KEY = 'ft_auth';
 const API_BASE = import.meta.env.VITE_API_URL ?? '';

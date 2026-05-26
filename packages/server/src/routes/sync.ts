@@ -3,7 +3,7 @@ import { db } from '../db';
 import { requireAuth } from '../auth';
 import type { Request } from 'express';
 import type { AuthPayload } from '../auth';
-import type { FoodEntry, ExerciseEntry, DailyMetrics, MoodEntry, AppSettings } from '@fitness/shared';
+import type { FoodEntry, ExerciseEntry, DailyMetrics, MoodEntry, AppSettings } from '@cadence/shared';
 
 const router = Router();
 router.use(requireAuth);

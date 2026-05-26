@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import type { AuthState } from '@fitness/shared';
+import type { AuthState } from '@cadence/shared';
 import styles from './AuthPage.module.css';
 
 interface Props {

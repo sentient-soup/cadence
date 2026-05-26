@@ -7,7 +7,7 @@ export default defineConfig({
   base: './',
   resolve: {
     alias: {
-      '@fitness/shared': path.resolve(__dirname, '../shared/src/index.ts'),
+      '@cadence/shared': path.resolve(__dirname, '../shared/src/index.ts'),
     },
   },
   server: {

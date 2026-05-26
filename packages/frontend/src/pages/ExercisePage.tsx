@@ -4,7 +4,7 @@ import { InputModal } from '../components/ui/InputModal';
 import { FAB } from '../components/ui/FAB';
 import { EmptyState } from '../components/ui/EmptyState';
 import { ExerciseEntryForm } from '../components/forms/ExerciseEntryForm';
-import type { ExerciseEntry } from '@fitness/shared';
+import type { ExerciseEntry } from '@cadence/shared';
 import styles from './ExercisePage.module.css';
 
 const TYPE_COLORS: Record<string, string> = {

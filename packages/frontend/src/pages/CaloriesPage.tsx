@@ -5,7 +5,7 @@ import { InputModal } from '../components/ui/InputModal';
 import { FAB } from '../components/ui/FAB';
 import { EmptyState } from '../components/ui/EmptyState';
 import { FoodEntryForm } from '../components/forms/FoodEntryForm';
-import type { FoodEntry } from '@fitness/shared';
+import type { FoodEntry } from '@cadence/shared';
 import styles from './CaloriesPage.module.css';
 
 const MEALS = ['breakfast', 'lunch', 'dinner', 'snack'] as const;

@@ -1,4 +1,4 @@
-import type { BaseEntry } from '@fitness/shared';
+import type { BaseEntry } from '@cadence/shared';
 
 export function getAll<T>(key: string): T[] {
   try {

@@ -1,5 +1,5 @@
 import { useState, useCallback, useRef } from 'react';
-import type { AppSettings } from '@fitness/shared';
+import type { AppSettings } from '@cadence/shared';
 import { STORAGE_KEYS } from '../storage/keys';
 import { getChangedSince, mergeEntries, getOne, setOne } from '../storage/storage';
 

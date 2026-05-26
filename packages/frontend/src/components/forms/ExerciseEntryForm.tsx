@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import type { ExerciseEntry, ExerciseType, StrengthSet } from '@fitness/shared';
+import type { ExerciseEntry, ExerciseType, StrengthSet } from '@cadence/shared';
 import { getISODate } from '../../utils/dateUtils';
 import styles from './Form.module.css';
 

@@ -1,4 +1,4 @@
-import type { FoodEntry, ExerciseEntry, DailyMetrics, MoodEntry } from '@fitness/shared';
+import type { FoodEntry, ExerciseEntry, DailyMetrics, MoodEntry } from '@cadence/shared';
 import { getLastNDays, groupByDate, formatDayLabel } from './dateUtils';
 import { sumCalories, calcDailyVolume } from './calcUtils';
 

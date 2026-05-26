@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import type { DailyMetrics } from '@fitness/shared';
+import type { DailyMetrics } from '@cadence/shared';
 import styles from './Form.module.css';
 
 interface Props {

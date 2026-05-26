@@ -10,7 +10,7 @@ importers:
 
   packages/frontend:
     dependencies:
-      '@fitness/shared':
+      '@cadence/shared':
         specifier: workspace:*
         version: link:../shared
       '@fontsource/barlow-condensed':
@@ -53,7 +53,7 @@ importers:
 
   packages/server:
     dependencies:
-      '@fitness/shared':
+      '@cadence/shared':
         specifier: workspace:*
         version: link:../shared
       bcrypt:

@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import type { FoodEntry } from '@fitness/shared';
+import type { FoodEntry } from '@cadence/shared';
 import { STORAGE_KEYS } from '../storage/keys';
 import { getAll, appendEntry, deleteEntry } from '../storage/storage';
 import { getISODate, getLastNDays } from '../utils/dateUtils';

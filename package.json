@@ -6,9 +6,9 @@
     "onlyBuiltDependencies": ["bcrypt", "better-sqlite3", "esbuild"]
   },
   "scripts": {
-    "dev:frontend": "pnpm --filter @fitness/frontend dev",
-    "dev:server": "pnpm --filter @fitness/server dev",
-    "build": "pnpm --filter @fitness/shared build && pnpm --filter @fitness/frontend build && pnpm --filter @fitness/server build",
-    "start": "pnpm --filter @fitness/server start"
+    "dev:frontend": "pnpm --filter @cadence/frontend dev",
+    "dev:server": "pnpm --filter @cadence/server dev",
+    "build": "pnpm --filter @cadence/shared build && pnpm --filter @cadence/frontend build && pnpm --filter @cadence/server build",
+    "start": "pnpm --filter @cadence/server start"
   }
 }

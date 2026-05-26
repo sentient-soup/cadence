@@ -1,4 +1,4 @@
-import type { FoodEntry, ExerciseEntry } from '@fitness/shared';
+import type { FoodEntry, ExerciseEntry } from '@cadence/shared';
 
 export function sumCalories(entries: FoodEntry[]): number {
   return entries.reduce((sum, e) => sum + e.calories, 0);

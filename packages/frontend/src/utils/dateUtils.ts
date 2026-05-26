@@ -1,4 +1,4 @@
-import type { BaseEntry } from '@fitness/shared';
+import type { BaseEntry } from '@cadence/shared';
 
 export function getISODate(d: Date = new Date()): string {
   return d.toISOString().split('T')[0];

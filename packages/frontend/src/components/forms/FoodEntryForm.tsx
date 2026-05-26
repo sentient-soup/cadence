@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import type { FoodEntry } from '@fitness/shared';
+import type { FoodEntry } from '@cadence/shared';
 import { getISODate } from '../../utils/dateUtils';
 import styles from './Form.module.css';
 

@@ -12,7 +12,7 @@ import { MoodPage } from './pages/MoodPage';
 import { ProgressPage } from './pages/ProgressPage';
 import { useAuth } from './hooks/useAuth';
 import { useSync } from './hooks/useSync';
-import type { AuthState } from '@fitness/shared';
+import type { AuthState } from '@cadence/shared';
 import styles from './App.module.css';
 
 function AppShell({ auth, onLogout }: { auth: AuthState; onLogout: () => void }) {

@@ -23,7 +23,7 @@
 
     /* Workspace paths */
     "paths": {
-      "@fitness/shared": ["../shared/src/index.ts"]
+      "@cadence/shared": ["../shared/src/index.ts"]
     }
   },
   "include": ["src"]
