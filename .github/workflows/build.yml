@@ -1,0 +1,75 @@
+name: Build & Deploy
+
+on:
+  push:
+    branches: [main]
+
+env:
+  IMAGE: ghcr.io/sentient-soup/cadence
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    outputs:
+      sha_tag: ${{ steps.sha.outputs.tag }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Short SHA
+        id: sha
+        run: echo "tag=sha-$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: |
+            ${{ env.IMAGE }}:${{ steps.sha.outputs.tag }}
+            ${{ env.IMAGE }}:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  update-gitops:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout gitops repo
+        uses: actions/checkout@v4
+        with:
+          # Create a fine-grained PAT with Contents: read+write on your gitops
+          # repo, then add it as a repo secret named GITOPS_TOKEN.
+          repository: sentient-soup/gitops   # ← change to your gitops repo
+          token: ${{ secrets.GITOPS_TOKEN }}
+
+      - name: Bump image tag
+        run: |
+          sed -i "s|newTag:.*|newTag: ${{ needs.build.outputs.sha_tag }}|" \
+            apps/cadence/kustomization.yaml
+
+      - name: Commit and push
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add apps/cadence/kustomization.yaml
+          git diff --staged --quiet && echo "no change" && exit 0
+          git commit -m "chore(cadence): deploy ${{ needs.build.outputs.sha_tag }}"
+          git push
