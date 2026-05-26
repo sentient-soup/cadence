@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cadence
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/sentient-soup/gitops   # ← change to your gitops repo
+    targetRevision: HEAD
+    path: apps/cadence
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: cadence
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
