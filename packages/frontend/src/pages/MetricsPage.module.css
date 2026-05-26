@@ -1,0 +1,148 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: 42px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  padding-top: var(--sp-2);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-3);
+}
+
+.tile {
+  background: var(--bg-surface);
+  border: 1px solid var(--bg-border);
+  border-radius: var(--radius-md);
+  padding: var(--sp-3) var(--sp-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+}
+
+.wide {
+  grid-column: span 2;
+}
+
+.tileLabel {
+  font-family: var(--font-data);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.tileValue {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-1);
+}
+
+.tileNum {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--text);
+}
+
+.tileDash {
+  color: var(--text-faint);
+  font-size: 28px;
+}
+
+.tileUnit {
+  font-family: var(--font-data);
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.sectionLabel {
+  font-family: var(--font-data);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.waterCard {
+  background: var(--bg-surface);
+  border: 1px solid var(--bg-border);
+  border-radius: var(--radius-md);
+  padding: var(--sp-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.waterHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.waterLabel {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.waterReading {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--info);
+}
+
+.waterUnit {
+  font-family: var(--font-data);
+  font-size: 13px;
+  color: var(--text-dim);
+}
+
+.waterAddBtn {
+  font-family: var(--font-data);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--info);
+  border: 1px solid var(--info);
+  border-radius: 20px;
+  padding: var(--sp-1) var(--sp-3);
+  opacity: 0.8;
+  transition: opacity 0.15s;
+}
+.waterAddBtn:active { opacity: 1; }
+
+.droplets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+}
+
+.droplet {
+  font-size: 20px;
+  color: var(--bg-border);
+  transition: color 0.2s, transform 0.1s;
+}
+.droplet:active { transform: scale(0.85); }
+
+.dropletFilled {
+  color: var(--info);
+}
+
+.goalMet {
+  font-family: var(--font-data);
+  font-size: 12px;
+  color: var(--success);
+  letter-spacing: 0.06em;
+}

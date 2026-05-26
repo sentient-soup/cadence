@@ -1,0 +1,166 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: 42px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  padding-top: var(--sp-2);
+}
+
+.progressCard {
+  background: var(--bg-surface);
+  border: 1px solid var(--bg-border);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.progressHeader {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-2);
+}
+
+.progressNum {
+  font-family: var(--font-display);
+  font-size: 52px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.progressGoal {
+  font-family: var(--font-data);
+  font-size: 14px;
+  color: var(--text-dim);
+}
+
+.bar {
+  height: 10px;
+  background: var(--bg-elevated);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.barFill {
+  height: 100%;
+  border-radius: 5px;
+  transition: width 0.4s ease;
+}
+
+.remaining {
+  font-family: var(--font-data);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+}
+
+.macros {
+  display: flex;
+  gap: var(--sp-5);
+  border-top: 1px solid var(--bg-border);
+  padding-top: var(--sp-3);
+}
+
+.macroStat { display: flex; flex-direction: column; gap: 2px; }
+.macroStatLabel {
+  font-family: var(--font-data);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.macroStatVal {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.mealGroup {
+  background: var(--bg-surface);
+  border: 1px solid var(--bg-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.mealHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--sp-2) var(--sp-4);
+  background: var(--bg-elevated);
+  border-bottom: 1px solid var(--bg-border);
+}
+
+.mealName {
+  font-family: var(--font-data);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--text-dim);
+}
+
+.mealTotal {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--accent-light);
+}
+
+.foodRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--sp-3) var(--sp-4);
+  border-bottom: 1px solid var(--bg-border);
+}
+.foodRow:last-child { border-bottom: none; }
+
+.foodInfo { display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 0; }
+
+.foodName {
+  font-size: 15px;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.foodMacros {
+  font-family: var(--font-data);
+  font-size: 11px;
+  color: var(--text-faint);
+}
+
+.foodRight {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  flex-shrink: 0;
+  margin-left: var(--sp-3);
+}
+
+.foodCal {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--accent-light);
+}
+
+.deleteBtn {
+  font-size: 11px;
+  color: var(--text-faint);
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: color 0.15s, background 0.15s;
+}
+.deleteBtn:hover { color: var(--danger); background: rgba(224,82,82,0.1); }
