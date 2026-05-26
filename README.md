@@ -46,8 +46,10 @@ The app listens on port 3000. SQLite data is stored in the `cadence-data` named 
 Every push to `main` triggers the workflow in `.github/workflows/build.yml`:
 
 1. Builds the Docker image and pushes `ghcr.io/sentient-soup/cadence:{sha}` + `:latest` to GHCR
-2. Commits the new SHA tag into `apps/cadence/kustomization.yaml` in the gitops repo
-3. ArgoCD detects the commit and syncs the new deployment automatically
+2. **ArgoCD Image Updater** (running on the cluster) polls GHCR, detects the new tag, and commits the update into the gitops repo automatically
+3. ArgoCD syncs the new deployment
+
+No `GITOPS_TOKEN` secret or gitops-commit step needed in CI — the cluster pulls changes rather than CI pushing them.
 
 ### Gitops repo setup
 
@@ -65,24 +67,32 @@ cp k8s/* apps/cadence/
 
 ### GitHub Actions secret
 
-Add one secret to this repo (Settings → Secrets → Actions):
-
-| Secret | Value |
-|---|---|
-| `GITOPS_TOKEN` | Fine-grained PAT with **Contents: read+write** on the gitops repo |
-
-`GITHUB_TOKEN` is provided automatically by Actions and is used for the GHCR push — no setup needed.
+`GITHUB_TOKEN` is provided automatically by Actions for the GHCR push — no additional secrets needed.
 
 ### Kubernetes one-time setup
 
 ```bash
-# Create the namespace and JWT secret
+# Install ArgoCD Image Updater
+kubectl apply -n argocd \
+  -f https://raw.githubusercontent.com/argoproj-labs/argocd-image-updater/stable/manifests/install.yaml
+
+# Give Image Updater a GHCR read credential
+kubectl create secret generic ghcr-image-updater \
+  --from-literal=username=sentient-soup \
+  --from-literal=password='<PAT with read:packages scope>' \
+  -n argocd
+
+# Register the GHCR registry with Image Updater
+kubectl patch configmap argocd-image-updater-config -n argocd --patch='
+{"data":{"registries.conf":"registries:\n- name: GitHub Container Registry\n  prefix: ghcr.io\n  api_url: https://ghcr.io\n  credentials: secret:argocd/ghcr-image-updater#username:password\n"}}'
+
+# App namespace, JWT secret, and GHCR pull secret
 kubectl create ns cadence
+
 kubectl create secret generic cadence-secrets \
   --from-literal=jwt-secret='<your-jwt-secret>' \
   -n cadence
 
-# GHCR pull secret (required if the package visibility is private)
 kubectl create secret docker-registry ghcr-pull-secret \
   --docker-server=ghcr.io \
   --docker-username=sentient-soup \
@@ -96,7 +106,7 @@ kubectl create secret docker-registry ghcr-pull-secret \
 kubectl apply -f k8s/argocd-app.yaml
 ```
 
-ArgoCD will immediately sync from the gitops repo and keep itself in sync on every subsequent commit the workflow makes.
+ArgoCD syncs immediately, then Image Updater takes over — every new image pushed to GHCR is detected and deployed automatically.
 
 ## Android (future)
 
