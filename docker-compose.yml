@@ -1,15 +1,28 @@
 services:
   app:
-    build: .
+    image: ghcr.io/sentient-soup/cadence:latest
+    # build: .   # uncomment to build from source instead of pulling
+    container_name: cadence
     ports:
       - "3000:3000"
     volumes:
       - cadence-data:/app/data
     environment:
-      - NODE_ENV=production
-      - PORT=3000
-      - JWT_SECRET=${JWT_SECRET:-change-this-secret-in-production}
+      NODE_ENV: production
+      PORT: "3000"
+      JWT_SECRET: ${JWT_SECRET:?Set JWT_SECRET in a .env file or shell environment}
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:3000/api/health || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
     restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
 
 volumes:
   cadence-data:
