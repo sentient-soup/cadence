@@ -1,0 +1,17 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-7) var(--sp-4);
+  color: var(--text-faint);
+}
+.icon {
+  font-size: 36px;
+  opacity: 0.4;
+}
+.text {
+  font-family: var(--font-data);
+  font-size: 13px;
+  letter-spacing: 0.05em;
+}

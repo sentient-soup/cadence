@@ -1,0 +1,7 @@
+.shell {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--sp-4);
+  padding-bottom: calc(var(--nav-height) + var(--safe-bottom) + var(--sp-5));
+  -webkit-overflow-scrolling: touch;
+}
