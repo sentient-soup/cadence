@@ -88,16 +88,16 @@ router.post('/', (req, res) => {
 
   const applyAll = db.transaction(() => {
     for (const e of changes.food ?? []) {
-      upsertFood.run({ ...e, userId, deleted: e.deleted ? 1 : 0 });
+      upsertFood.run({ ...e, userId, protein: e.protein ?? null, carbs: e.carbs ?? null, fat: e.fat ?? null, deleted: e.deleted ? 1 : 0 });
     }
     for (const e of changes.exercise ?? []) {
-      upsertExercise.run({ ...e, userId, sets: e.sets ? JSON.stringify(e.sets) : null, deleted: e.deleted ? 1 : 0 });
+      upsertExercise.run({ ...e, userId, durationMin: e.durationMin ?? null, sets: e.sets ? JSON.stringify(e.sets) : null, distanceMiles: e.distanceMiles ?? null, avgHeartRate: e.avgHeartRate ?? null, caloriesBurned: e.caloriesBurned ?? null, notes: e.notes ?? null, deleted: e.deleted ? 1 : 0 });
     }
     for (const e of changes.metrics ?? []) {
-      upsertMetrics.run({ ...e, userId, deleted: e.deleted ? 1 : 0 });
+      upsertMetrics.run({ ...e, userId, weightLbs: e.weightLbs ?? null, bodyFatPct: e.bodyFatPct ?? null, systolic: e.systolic ?? null, diastolic: e.diastolic ?? null, restingHR: e.restingHR ?? null, sleepHours: e.sleepHours ?? null, waterOz: e.waterOz ?? null, deleted: e.deleted ? 1 : 0 });
     }
     for (const e of changes.mood ?? []) {
-      upsertMood.run({ ...e, userId, deleted: e.deleted ? 1 : 0 });
+      upsertMood.run({ ...e, userId, notes: e.notes ?? null, deleted: e.deleted ? 1 : 0 });
     }
     if (changes.settings) {
       upsertSettings.run({ userId, ...changes.settings });
