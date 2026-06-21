@@ -32,6 +32,7 @@ COPY packages/shared/package.json ./packages/shared/
 COPY packages/server/package.json ./packages/server/
 
 COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/packages/server/node_modules ./packages/server/node_modules
 COPY --from=builder /app/packages/shared/dist ./packages/shared/dist
 COPY --from=builder /app/packages/frontend/dist ./packages/frontend/dist
 COPY --from=builder /app/packages/server/dist ./packages/server/dist
